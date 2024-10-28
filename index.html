@@ -350,6 +350,13 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <ol start="3" type="1">
 <li>When visualizing the distribution of <code>flipper_length_mm</code> among the three species in the penguins dataset, which of the following statements is most accurate?</li>
 </ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">%&gt;%</span> </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> species, </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">y =</span> flipper_length_mm,</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">fill =</span> species)) <span class="sc">+</span> </span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <ul>
 <li><p>A) <code>Adelie</code> penguins have the widest range of <code>flipper_length_mm</code>.</p></li>
 <li><p>B) <code>Gentoo</code> penguins have a significantly higher mean <code>flipper_length_mm</code> compared to the other two species.</p></li>
@@ -358,13 +365,13 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 </ul>
 <p><br></p>
 <ol start="4" type="1">
-<li>Which variable is most useful to distinguish between different species in the penguins dataset?</li>
+<li>Which species is most distinguishable using the <code>flipper_length_mm</code> ?</li>
 </ol>
 <ul>
-<li><p>A) Flipper Length</p></li>
-<li><p>B) Island</p></li>
-<li><p>C) Bill Depth</p></li>
-<li><p>D) Year</p></li>
+<li><p>A) Adelie</p></li>
+<li><p>B) Chinstrap</p></li>
+<li><p>C) Gentoo</p></li>
+<li><p>D) Non of them</p></li>
 </ul>
 <p><br></p>
 <ol start="5" type="1">
@@ -421,16 +428,16 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <section id="part-ii.-data-wrangling" class="level3">
 <h3 class="anchored" data-anchor-id="part-ii.-data-wrangling">Part II. Data wrangling</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="do">#####</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># missing values</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(VIM)</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">aggr</span>(penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter out when missings in 'bill_length_mm'</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">%&gt;%</span> </span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(bill_length_mm)) <span class="ot">-&gt;</span> penguins_new</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Check the missing values again</span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="fu">aggr</span>(penguins_new)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="do">#####</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co"># missing values</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(VIM)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">aggr</span>(penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter out when missings in 'bill_length_mm'</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">%&gt;%</span> </span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(bill_length_mm)) <span class="ot">-&gt;</span> penguins_new</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Check the missing values again</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="fu">aggr</span>(penguins_new)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol start="10" type="1">
 <li>Using <code>aggr(penguins)</code>, you observe the missing value distribution in the <code>penguins</code> dataset. Which variable has the highest number of missing values?</li>
@@ -456,11 +463,11 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <li>When imputing missing values with the <code>mice</code> package, which method is specified for handling missing data in this code?</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Missing value handling with mice library and check again</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mice)</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>penguins_new <span class="ot">&lt;-</span> <span class="fu">mice</span>(penguins_new, <span class="at">method=</span><span class="st">'rf'</span>, <span class="at">seed=</span><span class="dv">1234</span>)</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>penguins_imputed <span class="ot">&lt;-</span> <span class="fu">complete</span>(penguins_new, <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Missing value handling with mice library and check again</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mice)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>penguins_new <span class="ot">&lt;-</span> <span class="fu">mice</span>(penguins_new, <span class="at">method=</span><span class="st">'rf'</span>, <span class="at">seed=</span><span class="dv">1234</span>)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>penguins_imputed <span class="ot">&lt;-</span> <span class="fu">complete</span>(penguins_new, <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li><p>A) Linear regression</p></li>
@@ -483,7 +490,7 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <li>After imputation, you compare the <code>sex</code> variable in the original and imputed datasets with <code>table(penguins$sex)</code> and <code>table(penguins_imputed$sex)</code>. Which of the following might you expect?</li>
 </ol>
 <ul>
-<li><p>A) The imputed dataset will have more entries labeled as “female.”</p></li>
+<li><p>A) The imputed dataset will be perfect</p></li>
 <li><p>B) The distribution of <code>sex</code> remains the same as in the original dataset.</p></li>
 <li><p>C) The imputed dataset has more balanced entries between “male” and “female.”</p></li>
 <li><p>D) The original dataset has more balanced entries between “male” and “female.”</p></li>
@@ -492,6 +499,15 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <ol start="15" type="1">
 <li>Use the <code>group_by</code> and <code>summarise</code> functions, which of the following statements is true about the bill length (<code>bill_len</code>) based on gender?</li>
 </ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>penguins_imputed <span class="sc">%&gt;%</span> </span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sex) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">bill_len=</span><span class="fu">mean</span>(bill_length_mm),</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">bill_dep=</span><span class="fu">mean</span>(bill_depth_mm),</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">mass=</span><span class="fu">mean</span>(body_mass_g),</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">flipper_len=</span><span class="fu">mean</span>(flipper_length_mm)</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>            )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <ul>
 <li><p>A) Female penguins have a longer average bill length than male penguins.</p></li>
 <li><p>B) Male penguins have a longer average bill length than female penguins.</p></li>
@@ -500,7 +516,7 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 </ul>
 <p><br></p>
 <ol start="16" type="1">
-<li>Which morphological feature shows the smallest average difference between male and female penguins?</li>
+<li>Based on the result above, which morphological feature shows the smallest average difference between male and female penguins?</li>
 </ol>
 <ul>
 <li><p>A) Bill Length</p></li>
@@ -510,7 +526,7 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 </ul>
 <p><br></p>
 <ol start="17" type="1">
-<li>Which feature would likely be the most reliable for identifying the gender of a penguin based on averages?</li>
+<li>Based on the result above, which feature would likely be the most reliable for identifying the gender of a penguin based on averages?</li>
 </ol>
 <ul>
 <li><p>A) Bill Depth</p></li>
@@ -522,6 +538,15 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <ol start="18" type="1">
 <li>Which island shows the smallest average difference in <code>bill_depth_mm</code> (<code>bill_dep</code>) compared to the other islands?</li>
 </ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>penguins_imputed <span class="sc">%&gt;%</span> </span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(island) <span class="sc">%&gt;%</span> </span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">bill_len=</span><span class="fu">mean</span>(bill_length_mm),</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">bill_dep=</span><span class="fu">mean</span>(bill_depth_mm),</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">mass=</span><span class="fu">mean</span>(body_mass_g),</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">flipper_len=</span><span class="fu">mean</span>(flipper_length_mm)</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <ul>
 <li><p>A) Biscoe</p></li>
 <li><p>B) Dream</p></li>
@@ -544,19 +569,19 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <h3 class="anchored" data-anchor-id="part-iii.-train-the-model-modeling">Part III. Train the model (Modeling)</h3>
 <p>This is the code to train the dataset <em>penguins_imputed</em> with the decision tree model.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Decision Tree</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>penguins_imputed <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(<span class="st">"island"</span>, <span class="st">"sex"</span>, <span class="st">"year"</span>)) <span class="ot">-&gt;</span> train</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rpart)</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>dt_model <span class="ot">&lt;-</span> <span class="fu">rpart</span>(species<span class="sc">~</span>., <span class="at">data =</span> train, <span class="at">method =</span> <span class="st">"class"</span>)</span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(dt_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Decision Tree</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>penguins_imputed <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(<span class="st">"island"</span>, <span class="st">"sex"</span>, <span class="st">"year"</span>)) <span class="ot">-&gt;</span> train</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rpart)</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>dt_model <span class="ot">&lt;-</span> <span class="fu">rpart</span>(species<span class="sc">~</span>., <span class="at">data =</span> train, <span class="at">method =</span> <span class="st">"class"</span>)</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(dt_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This is to visualize the result:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rpart.plot)</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rpart.plot</span>(dt_model, <span class="at">type=</span><span class="dv">4</span>, <span class="at">extra=</span><span class="dv">100</span>, <span class="at">box.palette =</span><span class="st">"-YlGnBl"</span>, <span class="at">branch.lty =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rpart.plot)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rpart.plot</span>(dt_model, <span class="at">type=</span><span class="dv">4</span>, <span class="at">extra=</span><span class="dv">100</span>, <span class="at">box.palette =</span><span class="st">"-YlGnBl"</span>, <span class="at">branch.lty =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol start="20" type="1">
 <li>In the first node of the Decision Tree, which variable is used for the primary split, and what is its splitting threshold?</li>
@@ -609,14 +634,14 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <p><br></p>
 <p>Now, let’s train our data with Random Forest Algorithm.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(randomForest)</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>rf_model <span class="ot">&lt;-</span> <span class="fu">randomForest</span>(species<span class="sc">~</span>.,</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>                         <span class="at">data =</span> train, </span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>                         <span class="at">mtry =</span> <span class="dv">3</span>,</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>                         <span class="at">ntree =</span> <span class="dv">200</span>)</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>rf_model</span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="fu">varImpPlot</span>(rf_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(randomForest)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>rf_model <span class="ot">&lt;-</span> <span class="fu">randomForest</span>(species<span class="sc">~</span>.,</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>                         <span class="at">data =</span> train, </span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>                         <span class="at">mtry =</span> <span class="dv">3</span>,</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>                         <span class="at">ntree =</span> <span class="dv">200</span>)</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>rf_model</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="fu">varImpPlot</span>(rf_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol start="25" type="1">
 <li>After running the <code>randomForest</code> function, you observe the output <code>rf_model</code>. Which of the following statements about the <code>mtry</code> and <code>ntree</code> parameters is correct?</li>
@@ -668,11 +693,11 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <p><br></p>
 <p>Now, let’s train our data with Naive Bayes Algorithm.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Naive Bayes</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(naivebayes)</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>nb_model <span class="ot">&lt;-</span> <span class="fu">naive_bayes</span>(species <span class="sc">~</span> ., <span class="at">data=</span>train)</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(nb_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Naive Bayes</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(naivebayes)</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>nb_model <span class="ot">&lt;-</span> <span class="fu">naive_bayes</span>(species <span class="sc">~</span> ., <span class="at">data=</span>train)</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(nb_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol start="30" type="1">
 <li>Why is Naive Bayes considered a “naive” algorithm?</li>
@@ -696,27 +721,27 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <p><br></p>
 <p>Lastly, let’s train our data with kNN</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. kNN</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Normalization</span></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>nor <span class="ot">&lt;-</span> <span class="cf">function</span>(x) { (x <span class="sc">-</span> <span class="fu">min</span>(x)) <span class="sc">/</span> (<span class="fu">max</span>(x) <span class="sc">-</span> <span class="fu">min</span>(x)) }</span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>train <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">bill_length_mm=</span><span class="fu">nor</span>(bill_length_mm),</span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>                 <span class="at">bill_depth_mm=</span><span class="fu">nor</span>(bill_depth_mm),</span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>                 <span class="at">flipper_length_mm=</span><span class="fu">nor</span>(flipper_length_mm),</span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>                 <span class="at">body_mass_g=</span><span class="fu">nor</span>(body_mass_g)) <span class="sc">%&gt;%</span> </span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>species)<span class="ot">-&gt;</span> train_nor</span>
-<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(train_nor)</span>
-<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(class)</span>
-<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>kn_model <span class="ot">&lt;-</span> <span class="fu">knn</span>(train_nor, </span>
-<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>                train_nor[<span class="dv">101</span><span class="sc">:</span><span class="dv">120</span>,], </span>
-<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>                <span class="at">cl=</span>train<span class="sc">$</span>species, <span class="at">k=</span><span class="dv">13</span>)</span>
-<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a>tab <span class="ot">&lt;-</span> <span class="fu">table</span>(kn_model,train[<span class="dv">101</span><span class="sc">:</span><span class="dv">120</span>,<span class="st">"species"</span>])</span>
-<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a>tab</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. kNN</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Normalization</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>nor <span class="ot">&lt;-</span> <span class="cf">function</span>(x) { (x <span class="sc">-</span> <span class="fu">min</span>(x)) <span class="sc">/</span> (<span class="fu">max</span>(x) <span class="sc">-</span> <span class="fu">min</span>(x)) }</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>train <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">bill_length_mm=</span><span class="fu">nor</span>(bill_length_mm),</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>                 <span class="at">bill_depth_mm=</span><span class="fu">nor</span>(bill_depth_mm),</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>                 <span class="at">flipper_length_mm=</span><span class="fu">nor</span>(flipper_length_mm),</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>                 <span class="at">body_mass_g=</span><span class="fu">nor</span>(body_mass_g)) <span class="sc">%&gt;%</span> </span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>species)<span class="ot">-&gt;</span> train_nor</span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(train_nor)</span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(class)</span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>kn_model <span class="ot">&lt;-</span> <span class="fu">knn</span>(train_nor, </span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a>                train_nor[<span class="dv">101</span><span class="sc">:</span><span class="dv">120</span>,], </span>
+<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a>                <span class="at">cl=</span>train<span class="sc">$</span>species, <span class="at">k=</span><span class="dv">13</span>)</span>
+<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a>tab <span class="ot">&lt;-</span> <span class="fu">table</span>(kn_model,train[<span class="dv">101</span><span class="sc">:</span><span class="dv">120</span>,<span class="st">"species"</span>])</span>
+<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a>tab</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol start="32" type="1">
 <li>Why is data normalization necessary before applying the k-Nearest Neighbors (kNN) algorithm in this code?</li>
@@ -762,30 +787,30 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <section id="part-iv.-model-score-prediction" class="level3">
 <h3 class="anchored" data-anchor-id="part-iv.-model-score-prediction">Part IV. Model score &amp; Prediction</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="do">######################</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Score &amp; Prediction </span></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co"># create a train dataset</span></span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> train[<span class="fu">seq</span>(<span class="dv">1</span>,<span class="dv">300</span>,<span class="dv">3</span>),]</span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Prediction by using trained models</span></span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>pred_dt <span class="ot">&lt;-</span> <span class="fu">predict</span>(dt_model, test, <span class="at">type=</span><span class="st">'class'</span>)</span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>pred_rf <span class="ot">&lt;-</span> <span class="fu">predict</span>(rf_model, test, <span class="at">type=</span><span class="st">'class'</span>)</span>
-<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>pred_nb <span class="ot">&lt;-</span> <span class="fu">predict</span>(nb_model, test, <span class="at">type=</span><span class="st">'class'</span>)</span>
-<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>pred_kn <span class="ot">&lt;-</span> <span class="fu">knn</span>(train_nor, train_nor[<span class="fu">seq</span>(<span class="dv">1</span>,<span class="dv">300</span>,<span class="dv">3</span>),], <span class="at">cl=</span>train<span class="sc">$</span>species, <span class="at">k=</span><span class="dv">13</span>)</span>
-<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">truth=</span>train[<span class="fu">seq</span>(<span class="dv">1</span>,<span class="dv">300</span>,<span class="dv">3</span>),<span class="st">"species"</span>],</span>
-<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>           <span class="at">dt=</span>pred_dt, </span>
-<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>           <span class="at">rf=</span>pred_rf, </span>
-<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>           <span class="at">nb=</span>pred_nb, </span>
-<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>           <span class="at">kn=</span>pred_kn) <span class="sc">%&gt;%</span> </span>
-<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">dt=</span><span class="fu">ifelse</span>(dt<span class="sc">==</span>truth, <span class="dv">1</span>, <span class="dv">0</span>),</span>
-<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>         <span class="at">rf=</span><span class="fu">ifelse</span>(rf<span class="sc">==</span>truth, <span class="dv">1</span>, <span class="dv">0</span>),</span>
-<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>         <span class="at">nb=</span><span class="fu">ifelse</span>(nb<span class="sc">==</span>truth, <span class="dv">1</span>, <span class="dv">0</span>),</span>
-<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a>         <span class="at">kn=</span><span class="fu">ifelse</span>(kn<span class="sc">==</span>truth, <span class="dv">1</span>, <span class="dv">0</span>)) <span class="ot">-&gt;</span> score</span>
-<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>(score[<span class="sc">-</span><span class="dv">1</span>], <span class="dv">2</span>, sum)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="do">######################</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Score &amp; Prediction </span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="co"># create a train dataset</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> train[<span class="fu">seq</span>(<span class="dv">1</span>,<span class="dv">300</span>,<span class="dv">3</span>),]</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Prediction by using trained models</span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>pred_dt <span class="ot">&lt;-</span> <span class="fu">predict</span>(dt_model, test, <span class="at">type=</span><span class="st">'class'</span>)</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>pred_rf <span class="ot">&lt;-</span> <span class="fu">predict</span>(rf_model, test, <span class="at">type=</span><span class="st">'class'</span>)</span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>pred_nb <span class="ot">&lt;-</span> <span class="fu">predict</span>(nb_model, test, <span class="at">type=</span><span class="st">'class'</span>)</span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>pred_kn <span class="ot">&lt;-</span> <span class="fu">knn</span>(train_nor, train_nor[<span class="fu">seq</span>(<span class="dv">1</span>,<span class="dv">300</span>,<span class="dv">3</span>),], <span class="at">cl=</span>train<span class="sc">$</span>species, <span class="at">k=</span><span class="dv">13</span>)</span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">truth=</span>train[<span class="fu">seq</span>(<span class="dv">1</span>,<span class="dv">300</span>,<span class="dv">3</span>),<span class="st">"species"</span>],</span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>           <span class="at">dt=</span>pred_dt, </span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>           <span class="at">rf=</span>pred_rf, </span>
+<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a>           <span class="at">nb=</span>pred_nb, </span>
+<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a>           <span class="at">kn=</span>pred_kn) <span class="sc">%&gt;%</span> </span>
+<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">dt=</span><span class="fu">ifelse</span>(dt<span class="sc">==</span>truth, <span class="dv">1</span>, <span class="dv">0</span>),</span>
+<span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a>         <span class="at">rf=</span><span class="fu">ifelse</span>(rf<span class="sc">==</span>truth, <span class="dv">1</span>, <span class="dv">0</span>),</span>
+<span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a>         <span class="at">nb=</span><span class="fu">ifelse</span>(nb<span class="sc">==</span>truth, <span class="dv">1</span>, <span class="dv">0</span>),</span>
+<span id="cb21-22"><a href="#cb21-22" aria-hidden="true" tabindex="-1"></a>         <span class="at">kn=</span><span class="fu">ifelse</span>(kn<span class="sc">==</span>truth, <span class="dv">1</span>, <span class="dv">0</span>)) <span class="ot">-&gt;</span> score</span>
+<span id="cb21-23"><a href="#cb21-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-24"><a href="#cb21-24" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>(score[<span class="sc">-</span><span class="dv">1</span>], <span class="dv">2</span>, sum)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol start="36" type="1">
 <li>Which of the following best describes the <code>test</code> dataset?</li>

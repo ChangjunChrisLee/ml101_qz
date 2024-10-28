@@ -123,6 +123,15 @@ knitr::kable(penguins %>% head(10))
 
 3.  When visualizing the distribution of `flipper_length_mm` among the three species in the penguins dataset, which of the following statements is most accurate?
 
+```{r, output = F}
+penguins %>% 
+  ggplot(aes(x = species, 
+             y = flipper_length_mm,
+             fill = species)) + 
+  geom_boxplot()
+
+```
+
 -   A\) `Adelie` penguins have the widest range of `flipper_length_mm`.
 
 -   B\) `Gentoo` penguins have a significantly higher mean `flipper_length_mm` compared to the other two species.
@@ -133,15 +142,15 @@ knitr::kable(penguins %>% head(10))
 
 <br>
 
-4.  Which variable is most useful to distinguish between different species in the penguins dataset?
+4.  Which species is most distinguishable using the `flipper_length_mm` ?
 
--   A\) Flipper Length
+-   A\) Adelie
 
--   B\) Island
+-   B\) Chinstrap
 
--   C\) Bill Depth
+-   C\) Gentoo
 
--   D\) Year
+-   D\) Non of them
 
 <br>
 
@@ -279,7 +288,7 @@ penguins_imputed <- complete(penguins_new, 1)
 
 14. After imputation, you compare the `sex` variable in the original and imputed datasets with `table(penguins$sex)` and `table(penguins_imputed$sex)`. Which of the following might you expect?
 
--   A\) The imputed dataset will have more entries labeled as "female."
+-   A\) The imputed dataset will be perfect
 
 -   B\) The distribution of `sex` remains the same as in the original dataset.
 
@@ -291,6 +300,17 @@ penguins_imputed <- complete(penguins_new, 1)
 
 15. Use the `group_by` and `summarise` functions, which of the following statements is true about the bill length (`bill_len`) based on gender?
 
+```{r, output=F}
+
+penguins_imputed %>% 
+  group_by(sex) %>% 
+  summarise(bill_len=mean(bill_length_mm),
+            bill_dep=mean(bill_depth_mm),
+            mass=mean(body_mass_g),
+            flipper_len=mean(flipper_length_mm)
+            )
+```
+
 -   A\) Female penguins have a longer average bill length than male penguins.
 
 -   B\) Male penguins have a longer average bill length than female penguins.
@@ -301,7 +321,7 @@ penguins_imputed <- complete(penguins_new, 1)
 
 <br>
 
-16. Which morphological feature shows the smallest average difference between male and female penguins?
+16. Based on the result above, which morphological feature shows the smallest average difference between male and female penguins?
 
 -   A\) Bill Length
 
@@ -313,7 +333,7 @@ penguins_imputed <- complete(penguins_new, 1)
 
 <br>
 
-17. Which feature would likely be the most reliable for identifying the gender of a penguin based on averages?
+17. Based on the result above, which feature would likely be the most reliable for identifying the gender of a penguin based on averages?
 
 -   A\) Bill Depth
 
@@ -326,6 +346,17 @@ penguins_imputed <- complete(penguins_new, 1)
 <br>
 
 18. Which island shows the smallest average difference in `bill_depth_mm` (`bill_dep`) compared to the other islands?
+
+```{r, output=F}
+
+penguins_imputed %>% 
+  group_by(island) %>% 
+  summarise(bill_len=mean(bill_length_mm),
+            bill_dep=mean(bill_depth_mm),
+            mass=mean(body_mass_g),
+            flipper_len=mean(flipper_length_mm)
+  )
+```
 
 -   A\) Biscoe
 
