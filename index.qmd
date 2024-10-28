@@ -145,7 +145,7 @@ knitr::kable(penguins %>% head(10))
 
 <br>
 
-5.  If you want to check for missing values in the penguins dataset, which R code would you use?
+5.  If you want to check if there is any missing values in the penguins dataset, which R code would you use?
 
 -   A\) `any(is.na(penguins))`
 
