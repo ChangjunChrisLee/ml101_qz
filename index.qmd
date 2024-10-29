@@ -345,7 +345,7 @@ penguins_imputed %>%
 
 <br>
 
-18. Which island shows the smallest average difference in `bill_depth_mm` (`bill_dep`) compared to the other islands?
+18. Which island shows the smallest average value in `bill_depth_mm` (`bill_dep`) compared to the other islands?
 
 ```{r, output=F}
 
@@ -435,7 +435,7 @@ rpart.plot(dt_model, type=4, extra=100, box.palette ="-YlGnBl", branch.lty = 2)
 
 -   C\) 0.48
 
--   D\) 0.52
+-   D\) 0.56
 
 <br>
 
@@ -742,11 +742,11 @@ Suppose you have the following confusion matrix for a binary classification prob
 
 41. Based on the precision and recall calculated above, what is the F1-score for the “Adelie” class?
 
--   A\) 0.75
+-   A\) 0.76
 
--   B\) 0.77
+-   B\) 0.79
 
--   C\) 0.80
+-   C\) 0.83
 
 -   D\) 0.85
 
