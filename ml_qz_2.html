@@ -1,0 +1,1446 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>ML101 QZ#2 2024</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="ml_qz_2_files/libs/clipboard/clipboard.min.js"></script>
+<script src="ml_qz_2_files/libs/quarto-html/quarto.js"></script>
+<script src="ml_qz_2_files/libs/quarto-html/popper.min.js"></script>
+<script src="ml_qz_2_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="ml_qz_2_files/libs/quarto-html/anchor.min.js"></script>
+<link href="ml_qz_2_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="ml_qz_2_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="ml_qz_2_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="ml_qz_2_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="ml_qz_2_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">ML101 QZ#2 2024</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="date-and-location" class="level2">
+<h2 class="anchored" data-anchor-id="date-and-location"><strong>Date and Location</strong></h2>
+<ul>
+<li><p>Date: 10 Dec (Tue) 09:00 - 10:50</p></li>
+<li><p>Location: Class Room</p></li>
+</ul>
+</section>
+<section id="notice" class="level2">
+<h2 class="anchored" data-anchor-id="notice"><strong>Notice</strong></h2>
+<ul>
+<li><p>QZ #2 covers regression models, unsupervised learning algorithms, and model scoring.</p></li>
+<li><p>Quiz will be administered through Google Forms.</p></li>
+<li><p>Please bring your laptop for the quiz.</p></li>
+<li><p>You are allowed to access any information through the Internet</p></li>
+<li><p>However, communication with others is strictly prohibited.</p></li>
+<li><p>Do not use any messaging apps (e.g., KakaoTalk, TikTok, Line, WeChat, etc.) during the quiz.</p></li>
+</ul>
+<hr>
+</section>
+<section id="submit-your-answers" class="level2">
+<h2 class="anchored" data-anchor-id="submit-your-answers">Submit your answers</h2>
+<p>Solve the problem and submit your answer by entering it in the Google form at the link below.</p>
+<p><a href="https://forms.gle/bNUVpVVMKMzcgdZz6" class="uri">https://forms.gle/bNUVpVVMKMzcgdZz6</a></p>
+<hr>
+</section>
+<section id="qz" class="level2">
+<h2 class="anchored" data-anchor-id="qz"><strong>QZ</strong></h2>
+<section id="part-i.-linear-regression" class="level3">
+<h3 class="anchored" data-anchor-id="part-i.-linear-regression">Part I. Linear Regression</h3>
+<blockquote class="blockquote">
+<p>For the regression analysis, we are going to use USArrests data that we coveredin class. We will omit the description of the data because it was covered in class.</p>
+</blockquote>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"USArrests"</span>) </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(USArrests)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     Murder          Assault         UrbanPop          Rape      
+ Min.   : 0.800   Min.   : 45.0   Min.   :32.00   Min.   : 7.30  
+ 1st Qu.: 4.075   1st Qu.:109.0   1st Qu.:54.50   1st Qu.:15.07  
+ Median : 7.250   Median :159.0   Median :66.00   Median :20.10  
+ Mean   : 7.788   Mean   :170.8   Mean   :65.54   Mean   :21.23  
+ 3rd Qu.:11.250   3rd Qu.:249.0   3rd Qu.:77.75   3rd Qu.:26.18  
+ Max.   :17.400   Max.   :337.0   Max.   :91.00   Max.   :46.00  </code></pre>
+</div>
+</div>
+<p><br></p>
+<ol type="1">
+<li><strong>How many observations in the dataset?</strong></li>
+</ol>
+<ul>
+<li><p>A) 50</p></li>
+<li><p>B) 51</p></li>
+<li><p>C) 52</p></li>
+<li><p>D) 53</p></li>
+</ul>
+<p><br></p>
+<ol start="2" type="1">
+<li><strong>How many variables in the dataset?</strong></li>
+</ol>
+<ul>
+<li><p>A) 3</p></li>
+<li><p>B) 4</p></li>
+<li><p>C) 5</p></li>
+<li><p>D) 6</p></li>
+</ul>
+<p><br></p>
+<blockquote class="blockquote">
+<p>Crimes like Assault, Murder, and Rape are more likely to happen in cities. Linear regression analysis was performed to find out which variable among Assault, Murder, and Rape was the most Urban-population dependent variable. (See the code below)</p>
+</blockquote>
+<p><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Assault <span class="sc">~</span> UrbanPop, <span class="at">data=</span>USArrests)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Murder <span class="sc">~</span> UrbanPop, <span class="at">data=</span>USArrests)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>m3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Rape <span class="sc">~</span> UrbanPop, <span class="at">data=</span>USArrests)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = Assault ~ UrbanPop, data = USArrests)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-150.78  -61.85  -18.68   58.05  196.85 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)  
+(Intercept)  73.0766    53.8508   1.357   0.1811  
+UrbanPop      1.4904     0.8027   1.857   0.0695 .
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 81.33 on 48 degrees of freedom
+Multiple R-squared:  0.06701,   Adjusted R-squared:  0.04758 
+F-statistic: 3.448 on 1 and 48 DF,  p-value: 0.06948</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = Murder ~ UrbanPop, data = USArrests)
+
+Residuals:
+   Min     1Q Median     3Q    Max 
+-6.537 -3.736 -0.779  3.332  9.728 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)  
+(Intercept)  6.41594    2.90669   2.207   0.0321 *
+UrbanPop     0.02093    0.04333   0.483   0.6312  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 4.39 on 48 degrees of freedom
+Multiple R-squared:  0.00484,   Adjusted R-squared:  -0.01589 
+F-statistic: 0.2335 on 1 and 48 DF,  p-value: 0.6312</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = Rape ~ UrbanPop, data = USArrests)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-18.644  -5.476  -1.216   5.885  27.937 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)   
+(Intercept)  3.78707    5.71128   0.663    0.510   
+UrbanPop     0.26617    0.08513   3.127    0.003 **
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 8.626 on 48 degrees of freedom
+Multiple R-squared:  0.1692,    Adjusted R-squared:  0.1519 
+F-statistic: 9.776 on 1 and 48 DF,  p-value: 0.003001</code></pre>
+</div>
+</div>
+<p><br></p>
+<ol start="3" type="1">
+<li><strong>Which dependent variable has the most significant relationship (at least p&lt;0.05) with the urban population?</strong></li>
+</ol>
+<ul>
+<li><p>A) Assault</p></li>
+<li><p>B) Murder</p></li>
+<li><p>C) Rape</p></li>
+</ul>
+<p><br></p>
+<ol start="4" type="1">
+<li><strong>Choose a model in which only the intercept is a statistically significant coefficient.</strong></li>
+</ol>
+<ul>
+<li><p>A) m1</p></li>
+<li><p>B) m2</p></li>
+<li><p>C) m3</p></li>
+</ul>
+<p><br></p>
+<ol start="5" type="1">
+<li><strong>According to the result from summary, choose the model that fits the most.</strong></li>
+</ol>
+<ul>
+<li><p>A) m1</p></li>
+<li><p>B) m2</p></li>
+<li><p>C) m3</p></li>
+</ul>
+<p><br></p>
+<blockquote class="blockquote">
+<p>This time, I thought that Murder was influenced by Assault, Rape, and UrbanPop, so I performed the following regression analysis. (Multiple regression, see the code below).</p>
+</blockquote>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>m4 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Murder <span class="sc">~</span> Assault<span class="sc">+</span>Rape<span class="sc">+</span>UrbanPop, <span class="at">data=</span>USArrests)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m4)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = Murder ~ Assault + Rape + UrbanPop, data = USArrests)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-4.3990 -1.9127 -0.3444  1.2557  7.4279 
+
+Coefficients:
+             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  3.276639   1.737997   1.885   0.0657 .  
+Assault      0.039777   0.005912   6.729 2.33e-08 ***
+Rape         0.061399   0.055740   1.102   0.2764    
+UrbanPop    -0.054694   0.027880  -1.962   0.0559 .  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 2.574 on 46 degrees of freedom
+Multiple R-squared:  0.6721,    Adjusted R-squared:  0.6507 
+F-statistic: 31.42 on 3 and 46 DF,  p-value: 3.322e-11</code></pre>
+</div>
+</div>
+<p><br></p>
+<ol start="6" type="1">
+<li><strong>Which variable has a statistically significant effect on Y (dependent variable) among X (independent variables)? (at least p&lt;0.05)</strong></li>
+</ol>
+<ul>
+<li><p>A) Assault</p></li>
+<li><p>B) Rape</p></li>
+<li><p>C) UrbanPop</p></li>
+</ul>
+<p><br></p>
+<ol start="7" type="1">
+<li><strong>Use m4 (above model) to predict the Murder of a new state. New state is Assault=100, Rape=20, UrbanPop=60. Choose the correct predicted Murder of the new state.</strong></li>
+</ol>
+<ul>
+<li><p>A) 3.10</p></li>
+<li><p>B) 5.20</p></li>
+<li><p>C) 7.10</p></li>
+<li><p>D) 9.20</p></li>
+</ul>
+<p><br></p>
+<ol start="8" type="1">
+<li><strong>After running the model, you notice that the R-squared is quite high, but the Adjusted R-squared is significantly lower. What could be the most likely reason for this?</strong></li>
+</ol>
+<ul>
+<li><p>A) The model has too many predictors, which might be causing overfitting.</p></li>
+<li><p>B) The dependent variable is poorly defined.</p></li>
+<li><p>C) The model has an excellent fit and provides a good predictive power.</p></li>
+<li><p>D) There is a strong correlation between the predictors and the dependent variable.</p></li>
+</ul>
+<p><br></p>
+</section>
+<section id="part-ii.-non-linear-regression" class="level3">
+<h3 class="anchored" data-anchor-id="part-ii.-non-linear-regression">Part II. Non-linear Regression</h3>
+<blockquote class="blockquote">
+<p>The code below creates a factor-type variable ‘Murder_high’ that is 1 when Murder is greater than 10 (Zero if not), and stores it in USArrests_new.</p>
+</blockquote>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.5.1     ✔ tibble    3.2.1
+✔ lubridate 1.9.3     ✔ tidyr     1.3.1
+✔ purrr     1.0.2     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>USArrests <span class="sc">%&gt;%</span> </span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Murder_high=</span><span class="fu">as.factor</span>(<span class="fu">ifelse</span>(Murder <span class="sc">&gt;</span> <span class="dv">10</span>, <span class="dv">1</span>, <span class="dv">0</span>))) <span class="ot">-&gt;</span> USArrests_new</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(USArrests_new)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     Murder          Assault         UrbanPop          Rape       Murder_high
+ Min.   : 0.800   Min.   : 45.0   Min.   :32.00   Min.   : 7.30   0:35       
+ 1st Qu.: 4.075   1st Qu.:109.0   1st Qu.:54.50   1st Qu.:15.07   1:15       
+ Median : 7.250   Median :159.0   Median :66.00   Median :20.10              
+ Mean   : 7.788   Mean   :170.8   Mean   :65.54   Mean   :21.23              
+ 3rd Qu.:11.250   3rd Qu.:249.0   3rd Qu.:77.75   3rd Qu.:26.18              
+ Max.   :17.400   Max.   :337.0   Max.   :91.00   Max.   :46.00              </code></pre>
+</div>
+</div>
+<p><br></p>
+<ol start="9" type="1">
+<li><strong>How many observations have Murder_high equal to 1?</strong></li>
+</ol>
+<ul>
+<li><p>A) 5</p></li>
+<li><p>B) 15</p></li>
+<li><p>C) 25</p></li>
+<li><p>D) 35</p></li>
+</ul>
+<p><br></p>
+<blockquote class="blockquote">
+<p>Following code is about fitting the new data to Logit model by using ‘glm’ function. See the result and answer the questions below.</p>
+</blockquote>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>m5 <span class="ot">&lt;-</span> <span class="fu">glm</span>(Murder_high<span class="sc">~</span>Assault<span class="sc">+</span>Rape<span class="sc">+</span>UrbanPop, </span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">data=</span>USArrests_new, </span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">family=</span><span class="st">'binomial'</span>)</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m5)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+glm(formula = Murder_high ~ Assault + Rape + UrbanPop, family = "binomial", 
+    data = USArrests_new)
+
+Coefficients:
+            Estimate Std. Error z value Pr(&gt;|z|)    
+(Intercept) -5.65955    2.88481  -1.962 0.049781 *  
+Assault      0.03682    0.01094   3.366 0.000762 ***
+Rape        -0.04290    0.05858  -0.732 0.463976    
+UrbanPop    -0.02252    0.03647  -0.618 0.536865    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 61.086  on 49  degrees of freedom
+Residual deviance: 29.252  on 46  degrees of freedom
+AIC: 37.252
+
+Number of Fisher Scoring iterations: 6</code></pre>
+</div>
+</div>
+<p><br></p>
+<ol start="10" type="1">
+<li><strong>Choose the significant X variables related to Murder_high.</strong></li>
+</ol>
+<ul>
+<li><p>A) Assault</p></li>
+<li><p>B) Rape</p></li>
+<li><p>C) UrbanPop</p></li>
+<li><p>D) Murder</p></li>
+</ul>
+<p><br></p>
+<blockquote class="blockquote">
+<p>Define 3 new states as shown in the code below, and when the m5 model predicts the probability that Murder_high is 1 (use the type=‘response’ option)</p>
+</blockquote>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>new_state_1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Assault=</span><span class="dv">100</span>, <span class="at">Rape=</span><span class="dv">70</span>, <span class="at">UrbanPop=</span><span class="dv">60</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>new_state_2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Assault=</span><span class="dv">200</span>, <span class="at">Rape=</span><span class="dv">20</span>, <span class="at">UrbanPop=</span><span class="dv">30</span>)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>new_state_3 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Assault=</span><span class="dv">250</span>, <span class="at">Rape=</span><span class="dv">0</span>, <span class="at">UrbanPop=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="11" type="1">
+<li><strong>Choose all states with a predicted probability of being Murder_high is 1 equals 0.5 or greater. (Murder_high가 1일 확률이 0.5보다 큰 것을 고르시오).</strong></li>
+</ol>
+<ul>
+<li><p>A) new_state_1</p></li>
+<li><p>B) new_state_2</p></li>
+<li><p>C) new_state_3</p></li>
+</ul>
+<p><br></p>
+<ol start="12" type="1">
+<li><strong>Assault’s coefficient in the ‘m5’ model is the log odds ratio. Choose Assault’s Odds ratio.</strong></li>
+</ol>
+<ul>
+<li><p>A) 0.981</p></li>
+<li><p>B) 1.024</p></li>
+<li><p>C) 1.038</p></li>
+<li><p>D) 1.051</p></li>
+</ul>
+<p><br></p>
+</section>
+<section id="part-iii.-clustering" class="level3">
+<h3 class="anchored" data-anchor-id="part-iii.-clustering">Part III. Clustering</h3>
+<p><br></p>
+<blockquote class="blockquote">
+<p>Let’s use iris dataset. First thing we need to do for Clustering is the code below.</p>
+</blockquote>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">scale</span>(iris[<span class="sc">-</span><span class="dv">5</span>])</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Sepal.Length       Sepal.Width       Petal.Length      Petal.Width     
+ Min.   :-1.86378   Min.   :-2.4258   Min.   :-1.5623   Min.   :-1.4422  
+ 1st Qu.:-0.89767   1st Qu.:-0.5904   1st Qu.:-1.2225   1st Qu.:-1.1799  
+ Median :-0.05233   Median :-0.1315   Median : 0.3354   Median : 0.1321  
+ Mean   : 0.00000   Mean   : 0.0000   Mean   : 0.0000   Mean   : 0.0000  
+ 3rd Qu.: 0.67225   3rd Qu.: 0.5567   3rd Qu.: 0.7602   3rd Qu.: 0.7880  
+ Max.   : 2.48370   Max.   : 3.0805   Max.   : 1.7799   Max.   : 1.7064  </code></pre>
+</div>
+</div>
+<p><br></p>
+<ol start="13" type="1">
+<li><strong>Choose the best explanation the reason why we use ‘scale’ before clustering.</strong></li>
+</ol>
+<ul>
+<li><p>A) to minimize the bias caused by different units</p></li>
+<li><p>B) If you don’t scale, you can’t put it in the clustering function.</p></li>
+<li><p>C) This is not a necessary procedure</p></li>
+<li><p>D) to raise the model fit</p></li>
+</ul>
+<p><br></p>
+<blockquote class="blockquote">
+<p>This is the second step for the k-means clustering.</p>
+</blockquote>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(factoextra)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Welcome! Want to learn more? See two factoextra-related books at https://goo.gl/ve3WBa</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fviz_nbclust</span>(df, kmeans, <span class="at">method =</span> <span class="st">"wss"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="ml_qz_2_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="14" type="1">
+<li><strong>See the result, and choose the incorrect explanation of this step.</strong></li>
+</ol>
+<ul>
+<li><p>A) In this step, we can get a recommendation about the number of clusters ‘k’</p></li>
+<li><p>B) k is bigger the better</p></li>
+<li><p>C) The appropriate k is 3, but 2 or 4 is also Ok.</p></li>
+<li><p>D) Total Within Sum of Square is the smallest at k = 10</p></li>
+</ul>
+<p><br></p>
+<blockquote class="blockquote">
+<p>The code below is k-means clustering with k=3. Then, I created ‘iris_cluster’ by merging the original iris dataset and the clustering result. See the result of the table(iris_cluster<span class="math inline">\(Species, iris_cluster\)</span>cluster), and answer the questions.</p>
+</blockquote>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute k-means with k = 3</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>km.res <span class="ot">&lt;-</span> <span class="fu">kmeans</span>(df, <span class="dv">3</span>, <span class="at">nstart =</span> <span class="dv">25</span>)</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>iris_cluster <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(iris, <span class="at">cluster =</span> km.res<span class="sc">$</span>cluster)</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(iris_cluster<span class="sc">$</span>Species, iris_cluster<span class="sc">$</span>cluster)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>            
+              1  2  3
+  setosa     50  0  0
+  versicolor  0 39 11
+  virginica   0 14 36</code></pre>
+</div>
+</div>
+<p><br></p>
+<ol start="15" type="1">
+<li><strong>As a result of clustering, which species are best divided?</strong></li>
+</ol>
+<ul>
+<li><p>A) Setosa</p></li>
+<li><p>B) Versicolor</p></li>
+<li><p>C) Virginica</p></li>
+</ul>
+<p><br></p>
+<blockquote class="blockquote">
+<p>Let’s get back to the USArrests dataset. You want to group the states into three clusters based on the variables: Assault, Murder, Rape, and UrbanPop. You decide to use K-means clustering to do this.</p>
+</blockquote>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)  <span class="co"># For reproducibility</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>kmeans_result <span class="ot">&lt;-</span> <span class="fu">kmeans</span>(USArrests[, <span class="fu">c</span>(<span class="st">"Assault"</span>, <span class="st">"Murder"</span>, <span class="st">"Rape"</span>, <span class="st">"UrbanPop"</span>)], <span class="at">centers =</span> <span class="dv">3</span>)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>kmeans_result</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>K-means clustering with 3 clusters of sizes 16, 20, 14
+
+Cluster means:
+   Assault    Murder     Rape UrbanPop
+1 272.5625 11.812500 28.37500 68.31250
+2  87.5500  4.270000 14.39000 59.75000
+3 173.2857  8.214286 22.84286 70.64286
+
+Clustering vector:
+       Alabama         Alaska        Arizona       Arkansas     California 
+             1              1              1              3              1 
+      Colorado    Connecticut       Delaware        Florida        Georgia 
+             3              2              1              1              3 
+        Hawaii          Idaho       Illinois        Indiana           Iowa 
+             2              2              1              2              2 
+        Kansas       Kentucky      Louisiana          Maine       Maryland 
+             2              2              1              2              1 
+ Massachusetts       Michigan      Minnesota    Mississippi       Missouri 
+             3              1              2              1              3 
+       Montana       Nebraska         Nevada  New Hampshire     New Jersey 
+             2              2              1              2              3 
+    New Mexico       New York North Carolina   North Dakota           Ohio 
+             1              1              1              2              2 
+      Oklahoma         Oregon   Pennsylvania   Rhode Island South Carolina 
+             3              3              2              3              1 
+  South Dakota      Tennessee          Texas           Utah        Vermont 
+             2              3              3              2              2 
+      Virginia     Washington  West Virginia      Wisconsin        Wyoming 
+             3              3              2              2              3 
+
+Within cluster sum of squares by cluster:
+[1] 19563.862 19263.760  9136.643
+ (between_SS / total_SS =  86.5 %)
+
+Available components:
+
+[1] "cluster"      "centers"      "totss"        "withinss"     "tot.withinss"
+[6] "betweenss"    "size"         "iter"         "ifault"      </code></pre>
+</div>
+</div>
+<p><br></p>
+<ol start="16" type="1">
+<li><strong>After running the K-means clustering procedure, which of the following statements is most likely to be correct regarding the resulting clusters?</strong></li>
+</ol>
+<ul>
+<li><p>A) Each of the three clusters represents states with similar levels of Assault, Murder, Rape, and UrbanPop.</p></li>
+<li><p>B) K-means clustering is useful for predicting the Murder rate for individual states.</p></li>
+<li><p>C) K-means clustering will provide an exact classification of the states without any variability.</p></li>
+<li><p>D) The centroids of each cluster represent the average Murder rate for the states in that cluster.</p></li>
+</ul>
+<p><br></p>
+</section>
+<section id="part-iv.-apriori" class="level3">
+<h3 class="anchored" data-anchor-id="part-iv.-apriori">Part IV. Apriori</h3>
+<blockquote class="blockquote">
+<p>The code below is about Apriori algorithm for items {A, B, C, D, E, …} to find association patterns.</p>
+</blockquote>
+<p><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>itemList<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">"A, B, C"</span>, </span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>            <span class="st">"A, C"</span>,</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>            <span class="st">"B, D"</span>,</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>            <span class="st">"D, E, A"</span>,</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>            <span class="st">"B, F"</span>,</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>            <span class="st">"E, F"</span>, </span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>            <span class="st">"A, F"</span>,</span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>            <span class="st">"C, E, F"</span>,</span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>            <span class="st">"A, B, E"</span>, </span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>            <span class="st">"B, E, F, A, C"</span>,</span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>            <span class="st">"E, F, G, H, D"</span>,</span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>            <span class="st">"A, B, C"</span>)</span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(itemList,<span class="st">"ItemList.csv"</span>, <span class="at">quote =</span> <span class="cn">FALSE</span>, <span class="at">row.names =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(arules)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: Matrix</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'Matrix'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:tidyr':
+
+    expand, pack, unpack</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'arules'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:dplyr':
+
+    recode</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:base':
+
+    abbreviate, write</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(arulesViz)</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>txn <span class="ot">=</span> <span class="fu">read.transactions</span>(<span class="at">file=</span><span class="st">"ItemList.csv"</span>, </span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>                        <span class="at">rm.duplicates=</span> <span class="cn">TRUE</span>, </span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>                        <span class="at">format=</span><span class="st">"basket"</span>,<span class="at">sep=</span><span class="st">","</span>,<span class="at">cols=</span><span class="dv">1</span>);</span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>basket_rules <span class="ot">&lt;-</span> <span class="fu">apriori</span>(txn, </span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>                        <span class="at">parameter =</span> <span class="fu">list</span>(<span class="at">minlen=</span><span class="dv">2</span>, </span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>                                         <span class="at">sup =</span> <span class="fl">0.2</span>, </span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>                                         <span class="at">conf =</span> <span class="fl">0.1</span>, </span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a>                                         <span class="at">target=</span><span class="st">"rules"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Apriori
+
+Parameter specification:
+ confidence minval smax arem  aval originalSupport maxtime support minlen
+        0.1    0.1    1 none FALSE            TRUE       5     0.2      2
+ maxlen target  ext
+     10  rules TRUE
+
+Algorithmic control:
+ filter tree heap memopt load sort verbose
+    0.1 TRUE TRUE  FALSE TRUE    2    TRUE
+
+Absolute minimum support count: 2 
+
+set item appearances ...[0 item(s)] done [0.00s].
+set transactions ...[9 item(s), 13 transaction(s)] done [0.00s].
+sorting and recoding items ... [6 item(s)] done [0.00s].
+creating transaction tree ... done [0.00s].
+checking subsets of size 1 2 3 done [0.00s].
+writing ... [13 rule(s)] done [0.00s].
+creating S4 object  ... done [0.00s].</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(basket_rules)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>set of 13 rules
+
+rule length distribution (lhs + rhs):sizes
+ 2  3 
+10  3 
+
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  2.000   2.000   2.000   2.231   2.000   3.000 
+
+summary of quality measures:
+    support         confidence        coverage           lift       
+ Min.   :0.2308   Min.   :0.4286   Min.   :0.2308   Min.   :0.9286  
+ 1st Qu.:0.2308   1st Qu.:0.5714   1st Qu.:0.3846   1st Qu.:1.2381  
+ Median :0.2308   Median :0.6667   Median :0.4615   Median :1.4444  
+ Mean   :0.2663   Mean   :0.6516   Mean   :0.4260   Mean   :1.4020  
+ 3rd Qu.:0.3077   3rd Qu.:0.7500   3rd Qu.:0.4615   3rd Qu.:1.4857  
+ Max.   :0.3077   Max.   :1.0000   Max.   :0.5385   Max.   :1.9500  
+     count      
+ Min.   :3.000  
+ 1st Qu.:3.000  
+ Median :3.000  
+ Mean   :3.462  
+ 3rd Qu.:4.000  
+ Max.   :4.000  
+
+mining info:
+ data ntransactions support confidence
+  txn            13     0.2        0.1
+                                                                                       call
+ apriori(data = txn, parameter = list(minlen = 2, sup = 0.2, conf = 0.1, target = "rules"))</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">inspect</span>(basket_rules)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     lhs       rhs support   confidence coverage  lift      count
+[1]  {C}    =&gt; {B} 0.2307692 0.6000000  0.3846154 1.3000000 3    
+[2]  {B}    =&gt; {C} 0.2307692 0.5000000  0.4615385 1.3000000 3    
+[3]  {C}    =&gt; {A} 0.3076923 0.8000000  0.3846154 1.4857143 4    
+[4]  {A}    =&gt; {C} 0.3076923 0.5714286  0.5384615 1.4857143 4    
+[5]  {B}    =&gt; {A} 0.3076923 0.6666667  0.4615385 1.2380952 4    
+[6]  {A}    =&gt; {B} 0.3076923 0.5714286  0.5384615 1.2380952 4    
+[7]  {F}    =&gt; {E} 0.3076923 0.6666667  0.4615385 1.4444444 4    
+[8]  {E}    =&gt; {F} 0.3076923 0.6666667  0.4615385 1.4444444 4    
+[9]  {A}    =&gt; {E} 0.2307692 0.4285714  0.5384615 0.9285714 3    
+[10] {E}    =&gt; {A} 0.2307692 0.5000000  0.4615385 0.9285714 3    
+[11] {B, C} =&gt; {A} 0.2307692 1.0000000  0.2307692 1.8571429 3    
+[12] {A, C} =&gt; {B} 0.2307692 0.7500000  0.3076923 1.6250000 3    
+[13] {A, B} =&gt; {C} 0.2307692 0.7500000  0.3076923 1.9500000 3    </code></pre>
+</div>
+</div>
+<p><br></p>
+<ol start="17" type="1">
+<li><strong>How many rules in basket_rules?</strong></li>
+</ol>
+<ul>
+<li><p>A) 10</p></li>
+<li><p>B) 11</p></li>
+<li><p>C) 12</p></li>
+<li><p>D) 13</p></li>
+</ul>
+<p><br></p>
+<ol start="18" type="1">
+<li><strong>Choose the incorrect explanations for the result above</strong></li>
+</ol>
+<ul>
+<li><p>A) The highest lift rule is {A,B} =&gt; {C}</p></li>
+<li><p>B) The highest confidence rule is {B,C} =&gt; {A}</p></li>
+<li><p>C) The minimum value of the support is 0.2308</p></li>
+<li><p>D) Item A and E are highly associated each other</p></li>
+<li><p>E) lift is the only index we consider to find a good pattern</p></li>
+</ul>
+<p><br></p>
+<ol start="19" type="1">
+<li><strong>To increase the sales of item ‘F’, which items should be attached and sold?</strong></li>
+</ol>
+<ul>
+<li><p>A) A</p></li>
+<li><p>B) B</p></li>
+<li><p>C) C</p></li>
+<li><p>D) D</p></li>
+<li><p>E) E</p></li>
+</ul>
+<p><br></p>
+</section>
+<section id="part-v.-model-comparison-and-validation" class="level3">
+<h3 class="anchored" data-anchor-id="part-v.-model-comparison-and-validation">PART V. Model Comparison and Validation</h3>
+<p><br></p>
+<blockquote class="blockquote">
+<p>The following code is the first step we use for the model comparison and validation.</p>
+</blockquote>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: lattice</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'caret'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:purrr':
+
+    lift</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>USArrests_new <span class="sc">%&gt;%</span> </span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>Murder) <span class="ot">-&gt;</span> US</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>indexTrain <span class="ot">&lt;-</span> <span class="fu">createDataPartition</span>(US<span class="sc">$</span>Murder_high, <span class="at">p =</span> .<span class="dv">9</span>, <span class="at">list =</span> F)</span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>training <span class="ot">&lt;-</span> US[ indexTrain, ]</span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>testing  <span class="ot">&lt;-</span> US[<span class="sc">-</span>indexTrain, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><br></p>
+<ol start="20" type="1">
+<li><strong>Choose the incorrect explanation about the code above.</strong></li>
+</ol>
+<ul>
+<li><p>A) The createDataPartition function is used to divide the dataset into training andtesting dataset.</p></li>
+<li><p>B) The ratio of training and test data is 7:3.</p></li>
+<li><p>C) The Murder_high ratio in the train and test sets remains almost the same.</p></li>
+</ul>
+<p><br></p>
+<blockquote class="blockquote">
+<p>Following code is about training the same dataset with different algorithms (decision tree, random forest, knn, naive bayes), and comparing the model scores.</p>
+</blockquote>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>fitControl <span class="ot">&lt;-</span> <span class="fu">trainControl</span>(<span class="at">method =</span> <span class="st">"repeatedcv"</span>, <span class="at">number =</span> <span class="dv">10</span>, <span class="at">repeats =</span> <span class="dv">5</span>)</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>dt_fit <span class="ot">&lt;-</span> <span class="fu">train</span>(Murder_high <span class="sc">~</span> ., <span class="at">data =</span> training, <span class="at">method =</span> <span class="st">"rpart"</span>, <span class="at">trControl =</span> fitControl)</span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>rf_fit <span class="ot">&lt;-</span> <span class="fu">train</span>(Murder_high <span class="sc">~</span> ., <span class="at">data =</span> training, <span class="at">method =</span> <span class="st">"rf"</span>, <span class="at">trControl =</span> fitControl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>note: only 2 unique complexity parameters in default grid. Truncating the grid to 2 .</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>knn_fit <span class="ot">&lt;-</span> <span class="fu">train</span>(Murder_high <span class="sc">~</span> ., <span class="at">data =</span> training, <span class="at">method =</span> <span class="st">"knn"</span>, <span class="at">trControl =</span> fitControl)</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>nb_fit <span class="ot">&lt;-</span> <span class="fu">train</span>(Murder_high <span class="sc">~</span> ., <span class="at">data =</span> training, <span class="at">method =</span> <span class="st">"nb"</span>, <span class="at">trControl =</span> fitControl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in FUN(X[[i]], ...): Numerical 0 probability for all classes with
+observation 1</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in FUN(X[[i]], ...): Numerical 0 probability for all classes with
+observation 5</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in FUN(X[[i]], ...): Numerical 0 probability for all classes with
+observation 2</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in FUN(X[[i]], ...): Numerical 0 probability for all classes with
+observation 4</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>resamp<span class="ot">=</span><span class="fu">resamples</span>(<span class="fu">list</span>(<span class="at">DecisionTree=</span>dt_fit, </span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">RandomForest=</span>rf_fit, </span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">kNN=</span>knn_fit, </span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">NaiveBayes=</span>nb_fit))</span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(resamp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+summary.resamples(object = resamp)
+
+Models: DecisionTree, RandomForest, kNN, NaiveBayes 
+Number of resamples: 50 
+
+Accuracy 
+             Min. 1st Qu. Median      Mean 3rd Qu. Max. NA's
+DecisionTree  0.4    0.75   0.80 0.8246667       1    1    0
+RandomForest  0.5    0.60   0.75 0.7823333       1    1    0
+kNN           0.4    0.75   0.80 0.8553333       1    1    0
+NaiveBayes    0.2    0.75   0.80 0.8030000       1    1    0
+
+Kappa 
+                   Min. 1st Qu.    Median      Mean 3rd Qu. Max. NA's
+DecisionTree -0.3333333     0.5 0.5804196 0.6165045       1    1    0
+RandomForest -0.3333333     0.0 0.5000000 0.4681698       1    1    0
+kNN          -0.3333333     0.5 0.6153846 0.6502048       1    1    0
+NaiveBayes   -0.6666667     0.5 0.5454545 0.5250469       1    1    0</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dotplot</span>(resamp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="ml_qz_2_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><br></p>
+<ol start="21" type="1">
+<li><strong>Choose all incorrect explanations of the code above (multiple choices).</strong></li>
+</ol>
+<ul>
+<li><p>A) To calculate the accuracy and kappa, the repeated cross validation method is used</p></li>
+<li><p>B) “repeatedcv” divides the training dataset into 5 sections, and validates the model 10times</p></li>
+<li><p>C) The validation is repeated 5 times overall.</p></li>
+<li><p>D) Use test dataset for validation.</p></li>
+<li><p>E) Four models are compared in terms of accuracy and kappa index</p></li>
+</ul>
+<p><br></p>
+<ol start="22" type="1">
+<li><strong>Choose the best model according to the graph above</strong></li>
+</ol>
+<ul>
+<li><p>A) kNN</p></li>
+<li><p>B) Decision Tree</p></li>
+<li><p>C) Naive Bayes</p></li>
+<li><p>D) Random Forest</p></li>
+</ul>
+<p><br></p>
+<ol start="23" type="1">
+<li><strong>The simplest model, kNN (or decision tree), performed much better than the most complex model, random forest. Which of the following is appropriate for that reason?</strong></li>
+</ol>
+<ul>
+<li><p>A) The number of observations is too small to fit to the complicated model like random forest.</p></li>
+<li><p>B) This is because the proportion of Y (the dependent variable) = 1 was too small.</p></li>
+<li><p>C) It’s just a coincidence.</p></li>
+</ul>
+<p><br></p>
+<blockquote class="blockquote">
+<p>The following code is to predict with dt_fit, using testing dataset. Fill (1) and (2).</p>
+</blockquote>
+<p><img src="images/clipboard-1372338069.png" class="img-fluid"></p>
+<p><br></p>
+<ol start="24" type="1">
+<li><strong>Fill (1)</strong></li>
+</ol>
+<ul>
+<li><p>A) testing</p></li>
+<li><p>B) dt_fit</p></li>
+<li><p>C) training</p></li>
+<li><p>D) best_model</p></li>
+</ul>
+<p><br></p>
+<ol start="25" type="1">
+<li><strong>Fill (2)</strong></li>
+</ol>
+<ul>
+<li><p>A) training</p></li>
+<li><p>B) testing</p></li>
+<li><p>C) repeatedcv</p></li>
+<li><p>D) dt_fit</p></li>
+</ul>
+<p><br></p>
+<blockquote class="blockquote">
+<p>You are comparing two models for binary classification (predicting <code>Murder_high</code>), one based on <strong>Logistic Regression</strong> and the other on a <strong>Random Forest</strong>. You evaluate their performance using the following metrics:</p>
+</blockquote>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Model</th>
+<th>Accuracy</th>
+<th>Kappa</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Logistic Regression</td>
+<td>0.75</td>
+<td>0.50</td>
+</tr>
+<tr class="even">
+<td>Random Forest</td>
+<td>0.70</td>
+<td>0.60</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<ol start="26" type="1">
+<li><strong>Which model performs better in terms of <em>agreement beyond chance</em>?</strong></li>
+</ol>
+<ul>
+<li><p>A) Logistic Regression, because it has a higher accuracy.</p></li>
+<li><p>B) Random Forest, because it has a higher Kappa value.</p></li>
+<li><p>C) Both models perform the same because their accuracies are similar.</p></li>
+<li><p>D) Random Forest, because it has both higher accuracy and Kappa.</p></li>
+</ul>
+<p><br></p>
+<ol start="27" type="1">
+<li><strong>You are evaluating a binary classification model on imbalanced data where 95% of the observations belong to one class. Which metric would be most appropriate to assess the model’s performance?</strong></li>
+</ol>
+<ul>
+<li><p>A) Accuracy</p></li>
+<li><p>B) Precision</p></li>
+<li><p>C) Recall</p></li>
+<li><p>D) F1-Score</p></li>
+</ul>
+<ol start="28" type="1">
+<li><strong>Which type of machine learning does not require labeled data?</strong></li>
+</ol>
+<ul>
+<li><p>A) Supervised Learning</p></li>
+<li><p>B) Reinforcement Learning</p></li>
+<li><p>C) Unsupervised Learning</p></li>
+<li><p>D) Semi-Supervised Learning</p></li>
+</ul>
+<p><br></p>
+<ol start="29" type="1">
+<li><strong>What is the purpose of cross-validation in machine learning?</strong></li>
+</ol>
+<ul>
+<li><p>A) To split the data into smaller batches for faster training</p></li>
+<li><p>B) To optimize the hyperparameters of a model</p></li>
+<li><p>C) To assess the model’s performance by averaging results across multiple subsets of data</p></li>
+<li><p>D) To create an ensemble of multiple models</p></li>
+</ul>
+<p><br></p>
+<ol start="30" type="1">
+<li><strong>Which of the following is NOT an example of supervised learning?</strong></li>
+</ol>
+<ul>
+<li><p>A) Predicting house prices using historical data</p></li>
+<li><p>B) Identifying fraudulent credit card transactions</p></li>
+<li><p>C) Grouping customers into segments based on purchasing behavior</p></li>
+<li><p>D) Diagnosing diseases from medical images using labeled datasets</p></li>
+</ul>
+<p><br></p>
+<p><strong>The End of the QZ #2</strong></p>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

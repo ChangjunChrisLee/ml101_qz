@@ -1,0 +1,597 @@
+---
+title: "ML101 QZ#2 2024"
+format: html
+editor: visual
+---
+
+## **Date and Location**
+
+-   Date: 10 Dec (Tue) 09:00 - 10:50
+
+-   Location: Class Room
+
+## **Notice**
+
+-   QZ #2 covers regression models, unsupervised learning algorithms, and model scoring.
+
+-   Quiz will be administered through Google Forms.
+
+-   Please bring your laptop for the quiz.
+
+-   You are allowed to access any information through the Internet
+
+-   However, communication with others is strictly prohibited.
+
+-   Do not use any messaging apps (e.g., KakaoTalk, TikTok, Line, WeChat, etc.) during the quiz.
+
+------------------------------------------------------------------------
+
+## Submit your answers
+
+Solve the problem and submit your answer by entering it in the Google form at the link below.
+
+<https://forms.gle/bNUVpVVMKMzcgdZz6>
+
+------------------------------------------------------------------------
+
+## **QZ**
+
+### Part I. Linear Regression
+
+> For the regression analysis, we are going to use USArrests data that we coveredin class. We will omit the description of the data because it was covered in class.
+
+```{r}
+data("USArrests") 
+summary(USArrests)
+```
+
+<br>
+
+1.  **How many observations in the dataset?**
+
+-   A\) 50
+
+-   B\) 51
+
+-   C\) 52
+
+-   D\) 53
+
+<br>
+
+2.  **How many variables in the dataset?**
+
+-   A\) 3
+
+-   B\) 4
+
+-   C\) 5
+
+-   D\) 6
+
+<br>
+
+> Crimes like Assault, Murder, and Rape are more likely to happen in cities. Linear regression analysis was performed to find out which variable among Assault, Murder, and Rape was the most Urban-population dependent variable. (See the code below)
+
+<br>
+
+```{r}
+m1 <- lm(Assault ~ UrbanPop, data=USArrests)
+m2 <- lm(Murder ~ UrbanPop, data=USArrests)
+m3 <- lm(Rape ~ UrbanPop, data=USArrests)
+
+summary(m1)
+summary(m2)
+summary(m3)
+```
+
+<br>
+
+3.  **Which dependent variable has the most significant relationship (at least p\<0.05) with the urban population?**
+
+-   A\) Assault
+
+-   B\) Murder
+
+-   C\) Rape
+
+<br>
+
+4.  **Choose a model in which only the intercept is a statistically significant coefficient.**
+
+-   A\) m1
+
+-   B\) m2
+
+-   C\) m3
+
+<Br>
+
+5.  **According to the result from summary, choose the model that fits the most.**
+
+-   A\) m1
+
+-   B\) m2
+
+-   C\) m3
+
+<br>
+
+> This time, I thought that Murder was influenced by Assault, Rape, and UrbanPop, so I performed the following regression analysis. (Multiple regression, see the code below).
+
+```{r}
+m4 <- lm(Murder ~ Assault+Rape+UrbanPop, data=USArrests)
+summary(m4)
+```
+
+<br>
+
+6.  **Which variable has a statistically significant effect on Y (dependent variable) among X (independent variables)? (at least p\<0.05)**
+
+-   A\) Assault
+
+-   B\) Rape
+
+-   C\) UrbanPop
+
+<br>
+
+7.  **Use m4 (above model) to predict the Murder of a new state. New state is Assault=100, Rape=20, UrbanPop=60. Choose the correct predicted Murder of the new state.**
+
+-   A\) 3.10
+
+-   B\) 5.20
+
+-   C\) 7.10
+
+-   D\) 9.20
+
+<br>
+
+8.  **After running the model, you notice that the R-squared is quite high, but the Adjusted R-squared is significantly lower. What could be the most likely reason for this?**
+
+-   A\) The model has too many predictors, which might be causing overfitting.
+
+-   B\) The dependent variable is poorly defined.
+
+-   C\) The model has an excellent fit and provides a good predictive power.
+
+-   D\) There is a strong correlation between the predictors and the dependent variable.
+
+<br>
+
+### Part II. Non-linear Regression
+
+> The code below creates a factor-type variable 'Murder_high' that is 1 when Murder is greater than 10 (Zero if not), and stores it in USArrests_new.
+
+```{r}
+library(tidyverse)
+USArrests %>% 
+  mutate(Murder_high=as.factor(ifelse(Murder > 10, 1, 0))) -> USArrests_new
+
+summary(USArrests_new)
+```
+
+<br>
+
+9.  **How many observations have Murder_high equal to 1?**
+
+-   A\) 5
+
+-   B\) 15
+
+-   C\) 25
+
+-   D\) 35
+
+<Br>
+
+> Following code is about fitting the new data to Logit model by using 'glm' function. See the result and answer the questions below.
+
+```{r}
+m5 <- glm(Murder_high~Assault+Rape+UrbanPop, 
+          data=USArrests_new, 
+          family='binomial')
+summary(m5)
+```
+
+<br>
+
+10. **Choose the significant X variables related to Murder_high.**
+
+-   A\) Assault
+
+-   B\) Rape
+
+-   C\) UrbanPop
+
+-   D\) Murder
+
+<br>
+
+> Define 3 new states as shown in the code below, and when the m5 model predicts the probability that Murder_high is 1 (use the type='response' option)
+
+```{r}
+new_state_1 <- data.frame(Assault=100, Rape=70, UrbanPop=60)
+new_state_2 <- data.frame(Assault=200, Rape=20, UrbanPop=30)
+new_state_3 <- data.frame(Assault=250, Rape=0, UrbanPop=10)
+```
+
+11. **Choose all states with a predicted probability of being Murder_high is 1 equals 0.5 or greater. (Murder_high가 1일 확률이 0.5보다 큰 것을 고르시오).**
+
+-   A\) new_state_1
+
+-   B\) new_state_2
+
+-   C\) new_state_3
+
+<br>
+
+12. **Assault's coefficient in the 'm5' model is the log odds ratio. Choose Assault's Odds ratio.**
+
+-   A\) 0.981
+
+-   B\) 1.024
+
+-   C\) 1.038
+
+-   D\) 1.051
+
+<Br>
+
+### Part III. Clustering
+
+<br>
+
+> Let's use iris dataset. First thing we need to do for Clustering is the code below.
+
+```{r}
+df <- scale(iris[-5])
+summary(df)
+```
+
+<br>
+
+13. **Choose the best explanation the reason why we use 'scale' before clustering.**
+
+-   A\) to minimize the bias caused by different units
+
+-   B\) If you don't scale, you can't put it in the clustering function.
+
+-   C\) This is not a necessary procedure
+
+-   D\) to raise the model fit
+
+<bR>
+
+> This is the second step for the k-means clustering.
+
+```{r}
+library(factoextra)
+fviz_nbclust(df, kmeans, method = "wss")
+```
+
+14. **See the result, and choose the incorrect explanation of this step.**
+
+-   A\) In this step, we can get a recommendation about the number of clusters 'k'
+
+-   B\) k is bigger the better
+
+-   C\) The appropriate k is 3, but 2 or 4 is also Ok.
+
+-   D\) Total Within Sum of Square is the smallest at k = 10
+
+<br>
+
+> The code below is k-means clustering with k=3. Then, I created 'iris_cluster' by merging the original iris dataset and the clustering result. See the result of the table(iris_cluster$Species, iris_cluster$cluster), and answer the questions.
+
+```{r}
+# Compute k-means with k = 3
+set.seed(123)
+km.res <- kmeans(df, 3, nstart = 25)
+
+iris_cluster <- data.frame(iris, cluster = km.res$cluster)
+
+table(iris_cluster$Species, iris_cluster$cluster)
+```
+
+<br>
+
+15. **As a result of clustering, which species are best divided?**
+
+-   A\) Setosa
+
+-   B\) Versicolor
+
+-   C\) Virginica
+
+<br>
+
+> Let's get back to the USArrests dataset. You want to group the states into three clusters based on the variables: Assault, Murder, Rape, and UrbanPop. You decide to use K-means clustering to do this.
+
+```{r}
+set.seed(123)  # For reproducibility
+kmeans_result <- kmeans(USArrests[, c("Assault", "Murder", "Rape", "UrbanPop")], centers = 3)
+kmeans_result
+
+```
+
+<br>
+
+16. **After running the K-means clustering procedure, which of the following statements is most likely to be correct regarding the resulting clusters?**
+
+-   A\) Each of the three clusters represents states with similar levels of Assault, Murder, Rape, and UrbanPop.
+
+-   B\) K-means clustering is useful for predicting the Murder rate for individual states.
+
+-   C\) K-means clustering will provide an exact classification of the states without any variability.
+
+-   D\) The centroids of each cluster represent the average Murder rate for the states in that cluster.
+
+<Br>
+
+### Part IV. Apriori
+
+> The code below is about Apriori algorithm for items {A, B, C, D, E, ...} to find association patterns.
+
+<br>
+
+```{r}
+itemList<-c("A, B, C", 
+            "A, C",
+            "B, D",
+            "D, E, A",
+            "B, F",
+            "E, F", 
+            "A, F",
+            "C, E, F",
+            "A, B, E", 
+            "B, E, F, A, C",
+            "E, F, G, H, D",
+            "A, B, C")
+write.csv(itemList,"ItemList.csv", quote = FALSE, row.names = TRUE)
+
+library(arules)
+library(arulesViz)
+
+txn = read.transactions(file="ItemList.csv", 
+                        rm.duplicates= TRUE, 
+                        format="basket",sep=",",cols=1);
+
+basket_rules <- apriori(txn, 
+                        parameter = list(minlen=2, 
+                                         sup = 0.2, 
+                                         conf = 0.1, 
+                                         target="rules"))
+
+summary(basket_rules)
+inspect(basket_rules)
+```
+
+<br>
+
+17. **How many rules in basket_rules?**
+
+-   A\) 10
+
+-   B\) 11
+
+-   C\) 12
+
+-   D\) 13
+
+<br>
+
+18. **Choose the incorrect explanations for the result above**
+
+-   A\) The highest lift rule is {A,B} =\> {C}
+
+-   B\) The highest confidence rule is {B,C} =\> {A}
+
+-   C\) The minimum value of the support is 0.2308
+
+-   D\) Item A and E are highly associated each other
+
+-   E\) lift is the only index we consider to find a good pattern
+
+<br>
+
+19. **To increase the sales of item 'F', which items should be attached and sold?**
+
+-   A\) A
+
+-   B\) B
+
+-   C\) C
+
+-   D\) D
+
+-   E\) E
+
+<br>
+
+### PART V. Model Comparison and Validation
+
+<Br>
+
+> The following code is the first step we use for the model comparison and validation.
+
+```{r}
+library(caret)
+
+USArrests_new %>% 
+  select(-Murder) -> US
+
+indexTrain <- createDataPartition(US$Murder_high, p = .9, list = F)
+training <- US[ indexTrain, ]
+testing  <- US[-indexTrain, ]
+
+```
+
+<Br>
+
+20. **Choose the incorrect explanation about the code above.**
+
+-   A\) The createDataPartition function is used to divide the dataset into training andtesting dataset.
+
+-   B\) The ratio of training and test data is 7:3.
+
+-   C\) The Murder_high ratio in the train and test sets remains almost the same.
+
+<Br>
+
+> Following code is about training the same dataset with different algorithms (decision tree, random forest, knn, naive bayes), and comparing the model scores.
+
+```{r}
+
+fitControl <- trainControl(method = "repeatedcv", number = 10, repeats = 5)
+
+dt_fit <- train(Murder_high ~ ., data = training, method = "rpart", trControl = fitControl)
+rf_fit <- train(Murder_high ~ ., data = training, method = "rf", trControl = fitControl)
+knn_fit <- train(Murder_high ~ ., data = training, method = "knn", trControl = fitControl)
+nb_fit <- train(Murder_high ~ ., data = training, method = "nb", trControl = fitControl)
+
+resamp=resamples(list(DecisionTree=dt_fit, 
+                      RandomForest=rf_fit, 
+                      kNN=knn_fit, 
+                      NaiveBayes=nb_fit))
+summary(resamp)
+dotplot(resamp)
+```
+
+<Br>
+
+21. **Choose all incorrect explanations of the code above (multiple choices).**
+
+-   A\) To calculate the accuracy and kappa, the repeated cross validation method is used
+
+-   B\) "repeatedcv" divides the training dataset into 5 sections, and validates the model 10times
+
+-   C\) The validation is repeated 5 times overall.
+
+-   D\) Use test dataset for validation.
+
+-   E\) Four models are compared in terms of accuracy and kappa index
+
+<br>
+
+22. **Choose the best model according to the graph above**
+
+-   A\) kNN
+
+-   B\) Decision Tree
+
+-   C\) Naive Bayes
+
+-   D\) Random Forest
+
+<br>
+
+23. **The simplest model, kNN (or decision tree), performed much better than the most complex model, random forest. Which of the following is appropriate for that reason?**
+
+-   A\) The number of observations is too small to fit to the complicated model like random forest.
+
+-   B\) This is because the proportion of Y (the dependent variable) = 1 was too small.
+
+-   C\) It's just a coincidence.
+
+<br>
+
+> The following code is to predict with dt_fit, using testing dataset. Fill (1) and (2).
+
+![](images/clipboard-1372338069.png)
+
+<br>
+
+24. **Fill (1)**
+
+-   A\) testing
+
+-   B\) dt_fit
+
+-   C\) training
+
+-   D\) best_model
+
+<Br>
+
+25. **Fill (2)**
+
+-   A\) training
+
+-   B\) testing
+
+-   C\) repeatedcv
+
+-   D\) dt_fit
+
+<Br>
+
+> You are comparing two models for binary classification (predicting `Murder_high`), one based on **Logistic Regression** and the other on a **Random Forest**. You evaluate their performance using the following metrics:
+
+| Model               | Accuracy | Kappa |
+|---------------------|----------|-------|
+| Logistic Regression | 0.75     | 0.50  |
+| Random Forest       | 0.70     | 0.60  |
+
+<br>
+
+26. **Which model performs better in terms of *agreement beyond chance*?**
+
+-   A\) Logistic Regression, because it has a higher accuracy.
+
+-   B\) Random Forest, because it has a higher Kappa value.
+
+-   C\) Both models perform the same because their accuracies are similar.
+
+-   D\) Random Forest, because it has both higher accuracy and Kappa.
+
+<br>
+
+27. **You are evaluating a binary classification model on imbalanced data where 95% of the observations belong to one class. Which metric would be most appropriate to assess the model's performance?**
+
+-   A\) Accuracy
+
+-   B\) Precision
+
+-   C\) Recall
+
+-   D\) F1-Score
+
+28.   **Which type of machine learning does not require labeled data?**
+
+-   A\) Supervised Learning
+
+-   B\) Reinforcement Learning
+
+-   C\) Unsupervised Learning
+
+-   D\) Semi-Supervised Learning
+
+<br>
+
+29.   **What is the purpose of cross-validation in machine learning?**
+
+-   A\) To split the data into smaller batches for faster training
+
+-   B\) To optimize the hyperparameters of a model
+
+-   C\) To assess the model's performance by averaging results across multiple subsets of data
+
+-   D\) To create an ensemble of multiple models
+
+<br>
+
+30.   **Which of the following is NOT an example of supervised learning?**
+
+-   A\) Predicting house prices using historical data
+
+-   B\) Identifying fraudulent credit card transactions
+
+-   C\) Grouping customers into segments based on purchasing behavior
+
+-   D\) Diagnosing diseases from medical images using labeled datasets
+
+<br>
+
+**The End of the QZ #2**
